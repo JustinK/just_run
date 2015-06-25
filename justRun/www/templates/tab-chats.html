@@ -1,10 +1,72 @@
 <ion-view view-title="Run History">
   <ion-content>
+    <div class="list ">
+      <div class="item item-divider">
+        Summary (All Time)
+      </div>
+
+      <div class="item" href="#">
+        <!-- <i class="icon ion-ios-timer"></i> -->
+        Time
+        <span class="item-note">
+          63:45:22
+        </span>
+      </div>
+
+      <div class="item" href="#">
+        <!-- <i class="icon ion-ios-timer"></i> -->
+        Distance
+        <span class="item-note">
+          442 mi
+        </span>
+      </div>
+
+      <div class="item" href="#">
+        <!-- <i class="icon ion-ios-timer"></i> -->
+        Workouts
+        <span class="item-note">
+          167
+        </span>
+      </div>
+
+      <div class="item" href="#">
+        <!-- <i class="icon ion-ios-timer"></i> -->
+        Calories Burned
+        <span class="item-note">
+          47,982
+        </span>
+      </div>
+
+    </div>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
+      <ion-item class="item-remove-animate item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+        <h2>{{chat.date}}</h2>
+        <div class="list list-inset">
+        <div class="item">
+            Distance
+            <span class="item-note">
+              {{chat.distance}}
+            </span>
+          </div>
+         <div class="item">
+            Average Pace
+            <span class="item-note">
+              {{chat.pace}}
+            </span>
+          </div>
+          <div class="item">
+            Duration
+            <span class="item-note">
+              {{chat.duration}}
+            </span>
+          </div>
+          <div class="item">
+            Calories
+            <span class="item-note">
+              {{chat.calories}}
+            </span>
+          </div>
+        </div>
         <i class="icon ion-chevron-right icon-accessory"></i>
 
         <ion-option-button class="button-assertive" ng-click="remove(chat)">

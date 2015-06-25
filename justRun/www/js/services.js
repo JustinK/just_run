@@ -6,29 +6,39 @@ angular.module('starter.services', [])
   // Some fake testing data
   var chats = [{
     id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
-  }, {
+    date: 'June 24, 2015',
+    distance: '3.34',
+    duration: '32:43',
+    pace: '9:43',
+    calories: '662'
+  },{
     id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
+    date: 'June 21, 2015',
+    distance: '3.49',
+    duration: '38:16',
+    pace: '10:02',
+    calories: '578'
   },{
     id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+    date: 'June 17, 2015',
+    distance: '6.31',
+    duration: '32:43',
+    pace: '9:12',
+    calories: '662'
   }, {
     id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'https://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
+    date: 'June 11, 2015',
+    distance: '4.82',
+    duration: '32:43',
+    pace: '9:43',
+    calories: '662'
   }, {
     id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
+    date: 'June 8, 2015',
+    distance: '5.11',
+    time: '32:43',
+    duration: '9:43',
+    calories: '662'
   }];
 
   return {
