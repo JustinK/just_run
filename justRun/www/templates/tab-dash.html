@@ -3,34 +3,34 @@
     <div class="list">
 
       <div class="item item-icon-left" href="#">
-          <i class="icon ion-ios-timer"></i>
+          <i class="icon ion-ios-stopwatch-outline"></i>
           <h2>Duration</h2>
         <h1>
-          63:45:22
+          {{displayTime}}
         </h1>
       </div>
 
       <div class="item item-icon-left" href="#">
-          <i class="icon ion-ios-timer"></i>
+          <i class="icon ion-map"></i>
           <h2>Distance</h2>
         <h1>
-          21.23 mi
+          0.0 mi
         </h1>
       </div>
 
       <div class="item item-icon-left" href="#">
-          <i class="icon ion-ios-timer"></i>
+          <i class="icon ion-ios-speedometer-outline"></i>
           <h2>Pace</h2>
         <h1>
-          9:32 min/mi
+          0:00 min/mi
         </h1>
       </div>
 
     </div>
-    <button class="button button-block button-balanced">
+    <button ng-click="startClicked()" class="button button-block button-balanced">
       Start Running
     </button>
-    <button class="button button-block button-energized">
+    <button ng-click="stopClicked()" class="button button-block button-energized">
       Pause
     </button>
     <button class="button button-block button-outline button-assertive">

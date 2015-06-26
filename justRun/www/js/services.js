@@ -1,5 +1,25 @@
 angular.module('starter.services', [])
 
+.factory('StopWatch', function($interval){
+  var clock = null;
+
+  return {
+
+    startClock: function(fn){
+      if (clock === null){
+        clock = $interval(fn, 1000);
+      }
+    },
+    stopClock: function(){
+      if (clock !== null){
+        $interval.cancel(clock);
+        clock = null;
+      }
+    }
+    
+  };
+})
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 

@@ -1,6 +1,28 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope, StopWatch) {
+  var counter = 0;
+  $scope.displayTime = '00:00:00'
+  var runClock;
+
+  function displayTime() {
+    $scope.displayTime = moment().hour(0).minute(0).second(counter++).format('HH:mm:ss');
+  }
+  function startWatch(){
+    //alert('something');
+    $scope.displayTime = '5';
+    
+  }
+  function stopWatch(){
+    
+  }
+
+  $scope.startClicked = function (){
+    StopWatch.startClock(displayTime);
+  }
+  $scope.stopClicked = stopWatch();
+
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
