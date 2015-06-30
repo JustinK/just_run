@@ -2,29 +2,34 @@ angular.module('starter.services', [])
 
 .factory('StopWatch', function($interval){
   var clock = null;
-
+  var isRunning = false;
   return {
 
     startClock: function(fn){
       if (clock === null){
         clock = $interval(fn, 1000);
+        isRunning = true;
       }
     },
     stopClock: function(){
       if (clock !== null){
         $interval.cancel(clock);
         clock = null;
+        isRunning = false;
       }
+    },
+    isRunning: function(){
+      return isRunning;
     }
-    
+
   };
 })
 
-.factory('Chats', function() {
+.factory('Runs', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var chats = [{
+  var runs = [{
     id: 0,
     date: 'June 24, 2015',
     distance: '3.34',
@@ -63,15 +68,15 @@ angular.module('starter.services', [])
 
   return {
     all: function() {
-      return chats;
+      return runs;
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
+    remove: function(run) {
+      runs.splice(runs.indexOf(run), 1);
     },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+    get: function(runId) {
+      for (var i = 0; i < runs.length; i++) {
+        if (runs[i].id === parseInt(runId)) {
+          return runs[i];
         }
       }
       return null;

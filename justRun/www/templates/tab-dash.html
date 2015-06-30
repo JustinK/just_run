@@ -27,13 +27,13 @@
       </div>
 
     </div>
-    <button ng-click="startClicked()" class="button button-block button-balanced">
+    <button ng-hide="isRunning" ng-click="startClicked()" class="button button-block button-balanced">
       Start Running
     </button>
-    <button ng-click="stopClicked()" class="button button-block button-energized">
-      Pause
+    <button ng-show="isRunning" ng-click="stopClicked()" class="button button-block button-energized">
+      {{pauseLabel}}
     </button>
-    <button class="button button-block button-outline button-assertive">
+    <button ng-show="isPaused" class="button button-block button-outline button-assertive">
       End Session
     </button>
   </ion-content>

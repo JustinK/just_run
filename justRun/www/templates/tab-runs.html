@@ -39,37 +39,37 @@
 
     </div>
     <ion-list>
-      <ion-item class="item-remove-animate item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <h2>{{chat.date}}</h2>
+      <ion-item class="item-remove-animate item-icon-right" ng-repeat="run in runs" type="item-text-wrap" href="#/tab/runs/{{run.id}}">
+        <h2>{{run.date}}</h2>
         <div class="list list-inset">
         <div class="item">
             Distance
             <span class="item-note">
-              {{chat.distance}}
+              {{run.distance}}
             </span>
           </div>
          <div class="item">
             Average Pace
             <span class="item-note">
-              {{chat.pace}}
+              {{run.pace}}
             </span>
           </div>
           <div class="item">
             Duration
             <span class="item-note">
-              {{chat.duration}}
+              {{run.duration}}
             </span>
           </div>
           <div class="item">
             Calories
             <span class="item-note">
-              {{chat.calories}}
+              {{run.calories}}
             </span>
           </div>
         </div>
         <i class="icon ion-chevron-right icon-accessory"></i>
 
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+        <ion-option-button class="button-assertive" ng-click="remove(run)">
           Delete
         </ion-option-button>
       </ion-item>
