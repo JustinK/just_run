@@ -22,12 +22,12 @@
           <i class="icon ion-ios-speedometer-outline"></i>
           <h2>Pace</h2>
         <h1>
-          0:00 min/mi
+          {{location}}
         </h1>
       </div>
 
     </div>
-    <button ng-hide="isRunning" ng-click="startClicked()" class="button button-block button-balanced">
+    <button ng-hide="isRunning || isPaused" ng-click="startClicked()" class="button button-block button-balanced">
       Start Running
     </button>
     <button ng-show="isRunning" ng-click="stopClicked()" class="button button-block button-energized">
