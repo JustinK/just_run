@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, StopWatch, $cordovaGeolocation) {
+.controller('DashCtrl', function($scope, StopWatch, $cordovaGeolocation, $cordovaBackgroundGeolocation, $window) {
   var counter = 0;
   $scope.displayTime = '00:00:00'
   $scope.isRunning = false;
@@ -36,32 +36,83 @@ angular.module('starter.controllers', [])
   $scope.startClicked = startWatch;
   $scope.stopClicked = stopWatch;
 
-  var posOptions = {timeout: 10000, enableHighAccuracy: true};
-  $cordovaGeolocation
-    .getCurrentPosition(posOptions)
-    .then(function (position) {
-      var lat  = position.coords.latitude
-      var long = position.coords.longitude
-    }, function(err) {
-      // error
-    });
-
-
-  var watchOptions = {
-    frequency : 1000,
-    timeout : 3000,
-    enableHighAccuracy: false // may cause errors if true
-  };
-
-  var watch = $cordovaGeolocation.watchPosition(watchOptions);
-  watch.then(
-    null,
-    function(err) {
-      // error
+navigator.geolocation.getCurrentPosition(function(location) {
+        console.log('[GEOLOCAL JS1] Location from Phonegap');
     },
-    function(position) {
-      $scope.location  = position.coords.latitude + ' ' + position.coords.longitude;
+    function (error){
+        console.log('[GEOLOCAL JS1] error with GPS: error.code: ' + error.code + ' Message: ' + error.message);
+    },options);
+
+
+ var options = {
+    enableHighAccuracy : true,
+    desiredAccuracy: 0,
+    stationaryRadius: 1,
+    distanceFilter: 5,
+    notificationTitle: 'Background tracking', // <-- android only, customize the title of the notification
+    notificationText: 'ENABLED', // <-- android only, customize the text of the notification
+    activityType: 'AutomotiveNavigation',
+    debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
+    stopOnTerminate: false // <-- enable this to clear background location settings when the app terminates
+    };
+
+  //document.addEventListener("deviceready", function () {
+  ionic.Platform.ready(function(){
+      $scope.location = 'ready';
+    // `configure` calls `start` internally
+    $cordovaBackgroundGeolocation.configure(options)
+    .then(
+      null, // Background never resolves
+      function (err) { // error callback
+        $scope.location = err;
+      },
+      function (location) { // notify callback
+        $scope.location  = location; //.coords.latitude + ' ' + location.coords.longitude;
+      });
+
+    $scope.stopBackgroundGeolocation = function () {
+      $cordovaBackgroundGeolocation.stop();
+    };
+
   });
+    
+
+  //}, false);
+
+
+
+
+
+  // var posOptions = {timeout: 10000, enableHighAccuracy: true};
+  // $cordovaGeolocation
+  //   .getCurrentPosition(posOptions)
+  //   .then(function (position) {
+  //     var lat  = position.coords.latitude
+  //     var long = position.coords.longitude
+  //   }, function(err) {
+  //     // error
+  //   });
+
+
+  // var watchOptions = {
+  //   frequency : 1000,
+  //   timeout : 3000,
+  //   enableHighAccuracy: true // may cause errors if true
+  // };
+
+  // var watch = $cordovaGeolocation.watchPosition(watchOptions);
+  // watch.then(
+  //   null,
+  //   function(err) {
+  //     // error
+  //   },
+  //   function(position) {
+  //     $scope.location  = position.coords.latitude + ' ' + position.coords.longitude;
+  // });
+
+
+
+
 
 
   //watch.clearWatch();
@@ -76,8 +127,10 @@ angular.module('starter.controllers', [])
   // window.navigator.geolocation.getCurrentPosition(function(location) {
   //       console.log('Location from Phonegap');
   //   });
-
-  // var bgGeo = window.plugins.backgroundGeoLocation;
+  // $ionicPlatform.ready(function() {
+  //   $cordovaPlugin.someFunction().then(success, error);
+  // });
+   //var bgGeo = $window.plugins.backgroundGeoLocation;
 
   // /**
   //   * This would be your own callback for Ajax-requests after POSTing background geolocation to your server.
