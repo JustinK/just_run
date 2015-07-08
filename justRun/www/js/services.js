@@ -61,8 +61,15 @@ angular.module('starter.services', [])
     id: 4,
     date: 'June 8, 2015',
     distance: '5.11',
-    time: '32:43',
-    duration: '9:43',
+    duration: '32:43',
+    pace: '9:43',
+    calories: '662'
+  }, {
+    id: 5,
+    date: 'June 4, 2015',
+    distance: '6.22',
+    duration: '51:23',
+    pace: '9:43',
     calories: '662'
   }];
 

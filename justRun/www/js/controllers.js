@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, StopWatch, $cordovaGeolocation, $cordovaBackgroundGeolocation, $window) {
+.controller('DashCtrl', function($scope, StopWatch, $timeout, $cordovaGeolocation, $cordovaBackgroundGeolocation, $window) {
   var counter = 0;
   $scope.displayTime = '00:00:00'
   $scope.isRunning = false;
@@ -75,6 +75,22 @@ navigator.geolocation.getCurrentPosition(function(location) {
     };
 
   });
+
+   $timeout(function()
+    {
+      navigator.geolocation.getCurrentPosition(function(location)
+      {
+        console.log('[GEOLOCAL JS3] Location from Phonegap');
+        startPos = location;
+        $scope.$apply(function () {
+          $scope.location  = startPos.coords.latitude + ' ' + startPos.coords.longitude;
+        });
+        console.log("[GEOLOCAL BASIC] OK this time :), lat: "+startPos.coords.longitude);
+      },
+      function (error){
+        console.log('[GEOLOCAL JS3] error with GPS: error.code: ' + error.code + ' Message: ' + error.message);
+      },options);
+    }, 4000);
     
 
   //}, false);
